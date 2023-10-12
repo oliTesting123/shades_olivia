@@ -4,10 +4,10 @@ require 'db.php';
 
 header('Content-Type: application/json');
 
-// Obtener el método de la solicitud (POST, GET, PUT, DELETE)
+
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Función para devolver una respuesta JSON
+
 function responder($mensaje, $codigo = 200) {
     http_response_code($codigo);
     echo json_encode($mensaje);
@@ -16,7 +16,7 @@ function responder($mensaje, $codigo = 200) {
 
 switch ($method) {
     case 'POST':
-        // Crear un nuevo usuario
+       
         $data = json_decode(file_get_contents("php://input"), true);
 
         $nombre = $data['nombre'];
@@ -35,7 +35,7 @@ switch ($method) {
         }
 
     case 'GET':
-        // Obtener información de un usuario específico
+        
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $stmt = $conn->prepare("SELECT id, nombre, email FROM usuarios WHERE id = ?");
@@ -52,7 +52,7 @@ switch ($method) {
         }
 
     case 'PUT':
-        // Actualizar la información de un usuario
+        
         $data = json_decode(file_get_contents("php://input"), true);
 
         $id = $data['id'];
@@ -69,7 +69,7 @@ switch ($method) {
         }
 
     case 'DELETE':
-        // Eliminar un usuario
+        
         $data = json_decode(file_get_contents("php://input"), true);
 
         if (isset($data['id'])) {

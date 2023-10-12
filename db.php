@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $user = "root";
-$password = "technicaltest_olivia";
-$database = "";
+$password = "";
+$database = "technicaltest_olivia";
 
 $conn = new mysqli($host, $user, $password, $database);
 
